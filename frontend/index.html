@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SkillPath — AI Career Agent</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🎯 SkillPath</div>
+    <div class="tagline">AI Skill-Gap &amp; Personalized Learning Agent</div>
+  </header>
+
+  <main id="app" class="app">
+
+    <!-- STEP 1: Profile -->
+    <section id="view-profile" class="view active">
+      <h1>Tell us where you're starting from</h1>
+      <p class="muted">Your self-rated skills stay under your control — nothing here is shared or submitted anywhere automatically.</p>
+
+      <label>Your name</label>
+      <input id="studentName" type="text" placeholder="e.g. Aisha Khan" />
+
+      <label>Current skills (add as many as you like)</label>
+      <div id="skillRows" class="rows"></div>
+      <button class="ghost-btn" id="addSkillRow">+ Add skill</button>
+
+      <label>Projects you've already built (optional, but improves recommendations)</label>
+      <div id="projectRows" class="rows"></div>
+      <button class="ghost-btn" id="addProjectRow">+ Add project</button>
+
+      <label>GitHub username (optional)</label>
+      <input id="githubUsername" type="text" placeholder="octocat" />
+
+      <button class="primary-btn" id="toRoleBtn">Next: Choose target role →</button>
+    </section>
+
+    <!-- STEP 2: Target role -->
+    <section id="view-role" class="view">
+      <h1>What role are you aiming for?</h1>
+      <label>Target role</label>
+      <select id="roleSelect"></select>
+      <p class="muted" id="customRoleNote" style="display:none">
+        Not in our taxonomy? Pick the closest match, or type your own below —
+        the agent will still generate a baseline roadmap for it.
+      </p>
+      <input id="customRole" type="text" placeholder="Or type a custom role title" />
+
+      <label>Paste a real job description (optional — sharpens the analysis)</label>
+      <textarea id="jobDescription" rows="5" placeholder="Paste JD text here..."></textarea>
+
+      <div class="row-actions">
+        <button class="ghost-btn" id="backToProfile">← Back</button>
+        <button class="primary-btn" id="analyzeBtn">Analyze my gap →</button>
+      </div>
+    </section>
+
+    <!-- STEP 3: Dashboard -->
+    <section id="view-dashboard" class="view">
+      <div class="dash-header">
+        <h1 id="dashRoleTitle">Your roadmap</h1>
+        <span id="llmBadge" class="badge"></span>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+        <span id="progressLabel">0% complete</span>
+      </div>
+
+      <h2>Skill Gap</h2>
+      <div id="gapList" class="gap-list"></div>
+
+      <h2>Your Prioritized Roadmap</h2>
+      <p class="muted">Ordered by market importance × how far you are from the bar. Mark items as you go — the roadmap re-ranks nothing behind your back; it only updates when you ask it to.</p>
+      <div id="roadmapList" class="roadmap-list"></div>
+
+      <div class="row-actions">
+        <button class="ghost-btn" id="backToRole">← Change target role</button>
+        <button class="primary-btn" id="recomputeBtn">Recompute after updating skills</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">Bit N Build '26 — UP Regionals · Problem 05 · Education &amp; Employability</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

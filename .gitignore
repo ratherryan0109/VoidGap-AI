@@ -1,0 +1,15 @@
+# Secrets -- never commit real keys
+.env
+backend/.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+backend/venv/
+
+# Database
+backend/skillgap.db
+
+# OS
+.DS_Store
